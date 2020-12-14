@@ -24,6 +24,8 @@
     "styled-components": "^5.2.1"
   },
   "files": [
-    "lib/*"
+    "lib/*",
+    "index.js",
+    "package.json"
   ]
 }
