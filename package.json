@@ -1,8 +1,12 @@
 {
   "name": "comps-rc",
-  "version": "0.0.1",
+  "version": "0.0.2.1",
   "description": "testing comps",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodolfobc/comps-rc"
+  },
   "scripts": {
     "build": "rm -rf ./lib && tsc",
     "prepare": "npm run build",
