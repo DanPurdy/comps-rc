@@ -5,9 +5,7 @@ export interface FormSectionTitleProps {
   text: string;
 }
 
-declare const FormSectionTitle: FC<FormSectionTitleProps>;
-
-export default FormSectionTitle;
+export const FormSectionTitle: FC<FormSectionTitleProps>;
 
 export interface FormSectionDescriptionProps {
   color: string;
@@ -15,6 +13,4 @@ export interface FormSectionDescriptionProps {
   text: string;
 }
 
-declare const FormSectionDescription: FC<FormSectionDescriptionProps>;
-
-export default FormSectionDescription;
+export const FormSectionDescription: FC<FormSectionDescriptionProps>;
