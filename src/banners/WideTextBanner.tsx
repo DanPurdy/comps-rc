@@ -29,12 +29,12 @@ const WideTextBannerAnchor = styled.a`
   text-decoration: none;
 
   &:hover {
-    background-color: ${(): string => colors.primaryFontColor};
+    color: ${(): string => colors.primaryFontColor};
     text-decoration: none;
   }
 
   &:active {
-    background-color: ${(): string => colors.primaryFontColor};
+    color: ${(): string => colors.primaryFontColor};
   }
 `;
 
