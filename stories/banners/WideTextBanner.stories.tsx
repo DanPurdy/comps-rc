@@ -5,9 +5,17 @@ import { GlobalStyle } from '../../lib/theme';
 import WideTextBanner from '../../lib/banners/WideTextBanner';
 
 export default {
+  argTypes: { onClick: { action: 'clicked link' } },
   component: WideTextBanner,
   decorators: [(Story) => <BrowserRouter><GlobalStyle /><Story/></BrowserRouter>],
   title: 'Wide text banner',
+};
+
+const testFunc = (event) => {
+  // event.preventDefault();
+
+  console.log('CLICKING THE LINK FUNCTION');
+
 };
 
 const Template = (args) => <WideTextBanner {...args} />;
@@ -19,6 +27,7 @@ Default.args = {
 
 export const WithLink = Template.bind({});
 WithLink.args = {
+  // onClick: testFunc,
   text: 'Book today for 10% discount',
   link: '/en-gb/services',
 };

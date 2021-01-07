@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { WideTextBannerProps } from './index';
+import { LinkTypeProps } from '../link/index';
+import Link from '../link/Link';
 
 import styled from 'styled-components';
 
@@ -38,7 +40,7 @@ const WideTextBannerAnchor = styled.a`
   }
 `;
 
-const WideTextBannerLink = styled(Link)`
+const WideTextBannerLink = styled(Link)<LinkTypeProps>`
   color: #000000;
   text-decoration: none;
 
@@ -59,7 +61,7 @@ const WideTextBanner: FC<WideTextBannerProps> = ({ onClickBanner, onClickLink, l
   }
 
   if (text) {
-    if (!link) {
+    if (!link && !onClickLink) {
       return (
         <WideTextBannerElement
           className="referral-banner"
@@ -72,36 +74,52 @@ const WideTextBanner: FC<WideTextBannerProps> = ({ onClickBanner, onClickLink, l
         </WideTextBannerElement>
       );
     }
-    if (isExternalUrl(link)) {
+    // if (isExternalUrl(link)) {
+    //   return (
+    //     <WideTextBannerElement
+    //       className="referral-banner"
+    //     >
+    //       <WideTextBannerAnchor
+    //         dangerouslySetInnerHTML={{ __html: text}}
+    //         className="referral-banner__link"
+    //         data-qa="referral-banner"
+    //         href={link}
+    //         onClick={onClickLink}
+    //         target="_blank" // eslint-disable-line react/jsx-no-target-blank
+    //         rel="noopener"
+    //       />
+    //     </WideTextBannerElement>
+    //   );
+    // }
+    if (onClickLink) {
       return (
         <WideTextBannerElement
           className="referral-banner"
         >
-          <WideTextBannerAnchor
-            dangerouslySetInnerHTML={{ __html: text}}
+          <WideTextBannerLink
             className="referral-banner__link"
             data-qa="referral-banner"
-            href={link}
-            onClick={onClickLink}
-            target="_blank" // eslint-disable-line react/jsx-no-target-blank
-            rel="noopener"
+            onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => onClickLink(event)}
+            to={link}
+            text={text}
           />
         </WideTextBannerElement>
       );
     }
-    return (
-      <WideTextBannerElement
-        className="referral-banner"
-      >
-        <WideTextBannerLink
-          className="referral-banner__link"
-          data-qa="referral-banner"
-          onClick={onClickLink}
-          to={link}
-          dangerouslySetInnerHTML={{ __html: text}}
-        />
-      </WideTextBannerElement>
-    );
+    if (!onClickLink && link) {
+      return (
+        <WideTextBannerElement
+          className="referral-banner"
+        >
+          <WideTextBannerLink
+            className="referral-banner__link"
+            data-qa="referral-banner"
+            to={link}
+            text={text}
+          />
+        </WideTextBannerElement>
+      );
+    }
   }
 
   return null;

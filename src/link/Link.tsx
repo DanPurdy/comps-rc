@@ -20,19 +20,26 @@ const LinkElement = styled.a`
 
 const Link: FC<LinkTypeProps> = React.forwardRef<HTMLAnchorElement & HTMLDivElement, LinkTypeProps>(function Link(props, ref) {
   const {
+    className,
     onClick,
     text,
     to,
   } = props;
 
+  const clickEvent = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (onClick) {
+      onClick(event);
+    }
+  }
+
   return (
     <LinkElement
+      className={className}
       href={to}
-      onClick={(event) => onClick(event)}
+      onClick={(event) => clickEvent(event)}
       ref={ref}
-    >
-      {text}
-    </LinkElement>
+      dangerouslySetInnerHTML={{ __html: text || ''}}
+    />
   )
 });
 
