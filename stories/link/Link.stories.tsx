@@ -12,16 +12,20 @@ export default {
 
 const Template = (args) => <Link {...args} />;
 
-// const testFunc = (event) => {
-//   event.preventDefault();
-
-//   console.log('CLICKING THE LINK FUNCTION');
-
-// };
-
 export const Default = Template.bind({});
 Default.args = {
-  // to: 'http://google.com',
   text: 'Testing the link',
 };
 
+export const WithExternalLink = Template.bind({});
+WithExternalLink.args = {
+  text: 'Testing the external link',
+  to: 'http://google.com',
+};
+
+export const WithExternalBlankHrefLink = Template.bind({});
+WithExternalBlankHrefLink.args = {
+  target: '_blank',
+  text: 'Testing the external link woth target blank',
+  to: 'http://google.com',
+};

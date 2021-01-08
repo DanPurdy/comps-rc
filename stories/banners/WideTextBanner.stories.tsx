@@ -11,13 +11,6 @@ export default {
   title: 'Wide text banner',
 };
 
-const testFunc = (event) => {
-  // event.preventDefault();
-
-  console.log('CLICKING THE LINK FUNCTION');
-
-};
-
 const Template = (args) => <WideTextBanner {...args} />;
 
 export const Default = Template.bind({});
@@ -27,9 +20,7 @@ Default.args = {
 
 export const WithLink = Template.bind({});
 WithLink.args = {
-  // onClick: testFunc,
   text: 'Book today for 10% discount',
-  link: '/en-gb/services',
 };
 
 export const WithExternalLink = Template.bind({});

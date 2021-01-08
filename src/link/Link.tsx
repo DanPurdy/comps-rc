@@ -22,6 +22,7 @@ const Link: FC<LinkTypeProps> = React.forwardRef<HTMLAnchorElement & HTMLDivElem
   const {
     className,
     onClick,
+    target,
     text,
     to,
   } = props;
@@ -35,10 +36,11 @@ const Link: FC<LinkTypeProps> = React.forwardRef<HTMLAnchorElement & HTMLDivElem
   return (
     <LinkElement
       className={className}
+      dangerouslySetInnerHTML={{ __html: text || ''}}
       href={to}
       onClick={(event) => clickEvent(event)}
       ref={ref}
-      dangerouslySetInnerHTML={{ __html: text || ''}}
+      target={target}
     />
   )
 });
